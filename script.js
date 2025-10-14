@@ -10,7 +10,7 @@ let juegoTerminado = false;
 
 function iniciar() {
     render();
-    mostrarEstado(`Turno de ${turno}`);
+    mostrarEstado(`Turno de ${turno}`); // con $ puedo mostrar la variable sin hacer una concatenacion de string
 }
 
 function render() {
@@ -103,4 +103,4 @@ reiniciarBtn.onclick = () => {
     iniciar();
 };
 
-iniciar();
+iniciar(); // lit no se de otra forma para iniciar el sistema jajajajjaaja
