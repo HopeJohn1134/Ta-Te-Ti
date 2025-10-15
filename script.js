@@ -10,7 +10,7 @@ let juegoTerminado = false;
 
 function iniciar() {
     render();
-    mostrarEstado(`Turno de ${turno}`); // con $ puedo mostrar la variable sin hacer una concatenacion de string
+    mostrarEstado(`Turno de ${turno}`);
 }
 
 function render() {
@@ -53,7 +53,9 @@ function clickCasilla(i) {
     if (!celdas[i] && colocadas[turno] < 3) {
         celdas[i] = turno;
         colocadas[turno]++;
-        if (verificarGanador()) return;
+        if (verificarGanador()) {
+            return;
+        }
         cambiarTurno();
         return;
     }
@@ -65,6 +67,7 @@ function clickCasilla(i) {
         render();
     }
 }
+
 
 function cambiarTurno() {
     turno = turno === 'X' ? 'O' : 'X';
@@ -79,7 +82,7 @@ function verificarGanador() {
         [0, 4, 8], [2, 4, 6]
     ];
     for (const [a, b, c] of combinaciones) {
-        if (celdas[a] && celdas[a] === celdas[b] && celdas[a] === celdas[c]) {
+         if (celdas[a] && celdas[a] === celdas[b] && celdas[a] === celdas[c]) {
             mostrarGanador([a, b, c], celdas[a]);
             return true;
         }
@@ -88,6 +91,7 @@ function verificarGanador() {
 }
 
 function mostrarGanador(combo, ganador) {
+    render();
     juegoTerminado = true;
     estadoEl.textContent = `🎉 ¡Gana ${ganador}!`;
     const casillas = tableroEl.children;
